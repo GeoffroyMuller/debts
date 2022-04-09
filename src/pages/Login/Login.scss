@@ -1,0 +1,24 @@
+.login-page {
+    position: absolute;
+    @include flex(col, center, center);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.login-form {
+    @include flex(col, center, center, 6);
+    width: 30%;
+    min-width: 230px;
+    max-width: 290px;
+}
+
+.login-form__textfields {
+    width: 100%;
+    @include flex(col, center, center, 2)
+}
+
+.login-form__btns {
+    @include flex(col, center, center, 1)
+}

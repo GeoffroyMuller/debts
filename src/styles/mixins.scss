@@ -1,0 +1,66 @@
+@use "sass:list";
+
+@mixin flex($direction, $justify-content, $align-items, $spacing: none) {
+    $directions: row, col;
+
+    @if not list.index($directions, $direction) {
+        @warn "Unknown property #{$direction}";
+    }
+
+    display: flex;
+
+    @if $direction==col {
+        flex-direction: column;
+    }
+
+    @if $spacing !=none {
+        &>* {
+            @if $direction==col {
+                @if unitless($spacing) {
+                    margin-bottom: calc(8px * $spacing);
+                }
+
+                @else {
+                    margin-bottom: $spacing;
+                }
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            @else {
+                @if unitless($spacing) {
+                    margin-right: calc(8px * $spacing);
+                }
+
+                @else {
+                    margin-right: $spacing;
+                }
+
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    justify-content: $justify-content;
+    align-items: $align-items;
+}
+
+@mixin defaultBtnColor($_color: none) {
+    border: $_color 1px solid;
+    background-color: $_color;
+
+    &:hover {
+        color: $_color;
+    }
+}
+
+@mixin outlinedBtnColor($_color: none) {
+    border: $_color 1px solid;
+    color: $_color;
+    box-shadow: 0px 3px 1px 0px $_color;
+}

@@ -1,0 +1,85 @@
+.btn {
+    @include defaultBtnColor($primary);
+    border-radius: 50px;
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+    transition: background-color .25s, box-shadow .25s, color .25s, opacity .25s;
+    font-weight: 600;
+    min-width: 133px;
+    box-shadow: none;
+
+    &.successColor {
+        @include defaultBtnColor($success)
+    }
+
+    &.dangerColor {
+        @include defaultBtnColor($danger)
+    }
+
+    &.warningColor {
+        @include defaultBtnColor($warning)
+    }
+
+    &.infoColor {
+        @include defaultBtnColor($info)
+    }
+
+    &:hover {
+        box-shadow: none;
+        background-color: transparent;
+    }
+
+    &.outlinedBtn {
+        background-color: transparent;
+        @include outlinedBtnColor($primary);
+
+        &.successColor {
+            @include outlinedBtnColor($success)
+        }
+
+        &.dangerColor {
+            @include outlinedBtnColor($danger)
+        }
+
+        &.warningColor {
+            @include outlinedBtnColor($warning)
+        }
+
+        &.infoColor {
+            @include outlinedBtnColor($info)
+        }
+
+        &:hover {
+            box-shadow: none;
+            background-color: transparent;
+        }
+    }
+
+    &.textBtn {
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        min-width: 0;
+        color: $primary;
+
+        &.successColor {
+            color: $success;
+        }
+
+        &.dangerColor {
+            color: $danger;
+        }
+
+        &.warningColor {
+            color: $warning;
+        }
+
+        &.infoColor {
+            color: $info;
+        }
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
