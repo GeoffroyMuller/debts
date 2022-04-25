@@ -1,0 +1,16 @@
+.home {
+    margin-top: 16px;
+    padding: 0px 8px;
+    @include flex(column, center, center, 2);
+}
+
+.list-item__line {
+    @include flex(row, space-between, center);
+
+    &.justify-end {
+        @include flex(row, flex-end, center, 2);
+    }
+}
+.list-item__line--end {
+    margin-top: 8px;
+}

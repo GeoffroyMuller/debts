@@ -16,3 +16,11 @@ export async function login(email : string, password : string){
 export const isAuth = createMemo(() => {
     return !!authStore[0].user;
 }) 
+
+export async function disconnect() {
+    const [auth, setAuth] = authStore;  
+    setAuth({
+        user: undefined,
+        token: undefined
+    });
+}

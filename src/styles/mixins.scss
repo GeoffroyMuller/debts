@@ -1,7 +1,7 @@
 @use "sass:list";
 
 @mixin flex($direction, $justify-content, $align-items, $spacing: none) {
-    $directions: row, col;
+    $directions: row, col, column;
 
     @if not list.index($directions, $direction) {
         @warn "Unknown property #{$direction}";
@@ -9,13 +9,13 @@
 
     display: flex;
 
-    @if $direction==col {
+    @if $direction==col or $direction==column {
         flex-direction: column;
     }
 
     @if $spacing !=none {
         &>* {
-            @if $direction==col {
+            @if $direction==col or $direction==column {
                 @if unitless($spacing) {
                     margin-bottom: calc(8px * $spacing);
                 }

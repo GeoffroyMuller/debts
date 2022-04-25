@@ -20,7 +20,9 @@ const ListItem: Component<ListItemProps> = (props) => {
                     }
                 }
             }
-            <div className="list-item__content">
+            <div class="list-item__content" classList={{
+                'with-img': !!props.imgUrl
+            }}>
                 {props.children}
             </div>
         </div>

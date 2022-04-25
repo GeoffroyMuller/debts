@@ -13,6 +13,8 @@ export function createLocalStore(baseValue = {}, localStorageKey = "") {
     }
 
     createEffect(() => {
+        console.log(storeValue)
+
         localStorage.setItem(localStorageKey, JSON.stringify(storeValue));
     })
 
@@ -21,7 +23,7 @@ export function createLocalStore(baseValue = {}, localStorageKey = "") {
 
 
 let ressourcesCache: any = {};
-export function createCacheRessource(key: string, fetcher: () => Promise<Array<Operation>>, options: any = {}) {
+export function createCacheRessource<T>(key: string, fetcher: () => Promise<T | Array<T>>, options: any = {}) {
     const [data, { mutate, refetch }] = createResource(fetcher, {
         initialValue: ressourcesCache[key]
     });
