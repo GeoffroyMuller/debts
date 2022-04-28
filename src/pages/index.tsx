@@ -1,5 +1,5 @@
 import { Link } from "solid-app-router";
-import { createEffect, createMemo, For, Component, createSignal } from "solid-js";
+import { createEffect, createMemo, For, Component, createSignal, onMount } from "solid-js";
 import Button from "../components/Button";
 import ListItem from "../components/ListItem";
 import Modal from "../components/Modal";
@@ -11,6 +11,7 @@ import Typo from "../components/Typo";
 import { getContacts } from "../services/contact.services";
 import { getOperations, getTotals, declineOperation, acceptOperation } from "../services/operation.services";
 import authStore from "../stores/auth.store";
+import uiStore from "../stores/ui.store";
 import { Contact } from "../types/contact.types";
 import { Operation } from "../types/operation.types";
 import { createCacheRessource } from "../utils";
@@ -29,6 +30,11 @@ export default function Home() {
     const [operations, { refetch: refetchOperation }] = createCacheRessource<Operation[]>('operations', getOperations);
     const [contacts, { refetch: refetchContact }] = createCacheRessource<Contact[]>('contacts', getContacts);
     const [totals, { refetch: refetchTotal }] = createCacheRessource('totals', getTotals);
+    const [uiStoreValue, setUiStore] = uiStore;
+
+    onMount(() => {
+        setUiStore({ navBackArrowIsShow: false })
+    })
 
     const [newTransactionOpen, setNewTransactionOpen] = createSignal(false);
 

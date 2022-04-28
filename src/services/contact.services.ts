@@ -1,5 +1,3 @@
-import { createMemo } from "solid-js"
-import authStore from "../stores/auth.store"
 import { Contact } from "../types/contact.types"
 
 export async function getContacts(): Promise<Contact[]> {

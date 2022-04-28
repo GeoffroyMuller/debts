@@ -1,5 +1,5 @@
 import { useParams } from "solid-app-router";
-import { Component, For, Show, createSignal, createMemo } from "solid-js";
+import { Component, For, Show, createSignal, createMemo, onMount } from "solid-js";
 import Button from "../../components/Button";
 import ListItem from "../../components/ListItem";
 import NewTrasactionFormModal from "../../components/NewTransactionFormModal";
@@ -7,6 +7,7 @@ import Select from "../../components/Select";
 import Typo from "../../components/Typo";
 import { getContactById, getContacts } from "../../services/contact.services";
 import authStore from "../../stores/auth.store";
+import uiStore from "../../stores/ui.store";
 import { Contact } from "../../types/contact.types";
 import { Operation } from "../../types/operation.types";
 import { createCacheRessource } from "../../utils";
@@ -29,6 +30,11 @@ const ContactPage: Component<ContactPageProps> = (props) => {
     const [contact, { refetch: refetchContact }] = createCacheRessource<Contact>(`contact-${params.id}`, () => getContactById(params.id as unknown as number));
     const [contacts, { refetch: refetchContacts }] = createCacheRessource<Contact[]>('contacts', getContacts);
     const [newTransactionOpen, setNewTransactionOpen] = createSignal(false);
+    const [uiStoreValue, setUiStore] = uiStore;
+
+    onMount(() => {
+        setUiStore({ navBackArrowIsShow: true, navBackArrowPath: '/' })
+    })
 
     const [showDebtType, setShowDebtType] = createSignal<'debts' | 'credits' | 'all'>();
 
@@ -69,7 +75,7 @@ const ContactPage: Component<ContactPageProps> = (props) => {
     return (
         <div class="contact-page" >
             <Show when={contact()}>
-                <Typo typo="subtitle">
+                <Typo typo="title">
                     Historique {contact().firstname} {contact().lastname}
                 </Typo>
             </Show>
