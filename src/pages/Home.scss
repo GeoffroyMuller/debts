@@ -1,16 +1,41 @@
 .home {
-    margin-top: 16px;
-    padding: 0px 8px;
     @include flex(column, center, center, 2);
-}
+    margin-top: 16px;
+    padding: 50px 8px;
+    padding-top: 0px;
 
-.list-item__line {
-    @include flex(row, space-between, center);
-
-    &.justify-end {
-        @include flex(row, flex-end, center, 2);
+    footer {
+        position: fixed;
+        width: calc(100% - 16px);
+        bottom: 8px;
+        left: 8px;
     }
-}
-.list-item__line--end {
-    margin-top: 8px;
+
+    .list {
+        @include flex(column, center, center, 1.5);
+        width: 100%;
+    }
+
+    .list-item__line {
+    
+        @include flex(row, space-between, center);
+
+        &.justify-end {
+            @include flex(row, flex-end, center, 2);
+        }
+    }
+
+    .list-item__line--end {
+        margin-top: 8px;
+    }
+
+    .to-validate-operations-section {
+        @include flex(column, center, flex-start, 1.5);
+        width: 100%;
+    }
+
+    .contact-tabs {
+        @include flex(column, center, flex-start, 1.5);
+        width: 100%;
+    }
 }

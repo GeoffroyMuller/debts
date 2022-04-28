@@ -5,9 +5,14 @@
     padding: 8px 15px;
     cursor: pointer;
     transition: background-color .25s, box-shadow .25s, color .25s, opacity .25s;
-    font-weight: 600;
     min-width: 133px;
     box-shadow: none;
+    font-size: 15px;
+    min-height: 40px;
+
+    &.full-width {
+        width: 100%;
+    }
 
     &.successColor {
         @include defaultBtnColor($success)
@@ -62,6 +67,7 @@
         padding: 0;
         min-width: 0;
         color: $primary;
+        min-height: unset;
 
         &.successColor {
             color: $success;
@@ -78,6 +84,14 @@
         &.infoColor {
             color: $info;
         }
+
+        &.whiteColor {
+            color: $white;
+        }
+        &.blackColor {
+            color: $black;
+        }
+
         &:hover {
             opacity: 0.5;
         }

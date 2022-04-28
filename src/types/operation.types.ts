@@ -1,4 +1,5 @@
 export interface Operation {
+    id?: number;
     debtor: any;
     creditor: any;
     description: string;

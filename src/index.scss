@@ -2,6 +2,14 @@ p {
   margin: 0;
 }
 
+a {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none; 
+  width: inherit;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -20,24 +28,35 @@ button {
   cursor: pointer;
 }
 
-.title {
-  font-size: 16px;
-  color: black;
+* {
+  @include typo(text);
 }
 
-.sub-title {
-  font-size: 12px;
-  color: #626262;
+
+
+input[type=radio] {
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid #626262;
+  border-radius: 50%;
+
+  display: grid;
+  place-content: center;
 }
 
-.text-bold {
-  font-weight: bold;
+input[type=radio]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: $primary;
 }
 
-.success-color {
-  color: $success;
-}
-
-.danger-color {
-  color: $danger;
+input[type=radio]:checked::before {
+  transform: scale(1);
 }

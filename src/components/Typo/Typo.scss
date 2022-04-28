@@ -1,18 +1,20 @@
-.icon {
-    &.icon-xs {
-        font-size: 18px;
+
+.typo {
+
+    &.typo-title {
+        @include typo(title);
+    }
+
+    &.typo-subtitle {
+        @include typo(subtitle);
+    }
+
+    &.typo-text {
+        @include typo(text);
     }
     
-    &.icon-sm {
-        font-size: 24px;
-    }
-    
-    &.icon-md {
-        font-size: 36px;
-    }
-    
-    &.icon-lg {
-        font-size: 48px;
+    &.typo-text2 {
+        @include typo(text2);
     }
 
     &.successColor {
@@ -39,3 +41,4 @@
     }
     
 }
+

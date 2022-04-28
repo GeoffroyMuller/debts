@@ -4,7 +4,8 @@ import './TextField.scss';
 interface TextFieldProps {
     onChange?: (value: string) => void,
     type?: string,
-    label?: string
+    label?: string,
+    multiline?: boolean;
 }
 const TextField: Component<TextFieldProps> = (props) => {
     return (
@@ -14,15 +15,27 @@ const TextField: Component<TextFieldProps> = (props) => {
             <label>
                 {props.label}
             </label>
-            <input
-                onInput={(event: InputEvent) => {
-                    if (props.onChange) {
-                        // @ts-ignore
-                        props.onChange(event.target.value)
-                    }
-                }}
-                type={props.type || 'text'}
-            />
+            {!props.multiline ? (
+                <input
+                    onInput={(event: InputEvent) => {
+                        if (props.onChange) {
+                            // @ts-ignore
+                            props.onChange(event.target.value)
+                        }
+                    }}
+                    type={props.type || 'text'}
+                />
+            ) : (
+                <textarea
+                    onInput={(event: InputEvent) => {
+                        if (props.onChange) {
+                            // @ts-ignore
+                            props.onChange(event.target.value)
+                        }
+                    }}
+                />
+            )}
+
         </div>
 
 

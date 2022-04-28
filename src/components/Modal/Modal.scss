@@ -1,0 +1,25 @@
+.modal {
+    z-index: 999;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left:0;
+    right: 0;
+    padding: 16px 16px;
+    background: white;
+    border-radius: 14px;
+    margin: 0px 8px;
+    height: fit-content;
+    opacity: 1;
+}
+
+.modal-background {
+    z-index: 998;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: .6;
+}

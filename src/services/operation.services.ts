@@ -1,7 +1,33 @@
 import { createMemo } from "solid-js"
 import authStore from "../stores/auth.store"
+import { Operation } from "../types/operation.types"
 
-export async function getOperations(){
+interface Total {
+    debt: number;
+    credit: number;
+}
+
+
+export async function getTotals(): Promise<Total> {
+    return {
+        debt: 10,
+        credit: 100.54
+    }
+}
+
+export async function addOperation(operation: Operation): Promise<Operation> {
+    return { ...operation, id: Math.random() }
+}
+
+export async function declineOperation(operation: Operation): Promise<Operation> {
+    return operation
+}
+
+export async function acceptOperation(operation: Operation): Promise<Operation> {
+    return operation
+}
+
+export async function getOperations(): Promise<Operation[]> {
     return [
         {
             debtor: {
@@ -27,16 +53,15 @@ export async function getOperations(){
                 lastname: 'Robert',
                 email: 'robert@gmaild.vv'
             },
-            creditor:{
+            creditor: {
                 id: 1,
                 firstname: 'michkddita',
                 lastname: 'touille',
                 email: 'geoff@gmaild.vv'
-            } ,
+            },
             date: '26/01/2022',
             description: 'Lorem ipsum ...',
             amount: 100.54
         }
     ]
 }
- 

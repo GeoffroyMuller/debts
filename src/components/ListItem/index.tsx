@@ -3,11 +3,13 @@ import './ListItem.scss';
 
 interface ListItemProps {
     imgUrl?: string
+    onClick?: (event: Event) => void
 }
 const ListItem: Component<ListItemProps> = (props) => {
     return (
         <div
             class="list-item"
+            onClick={props.onClick}
         >
             {
                 () => {

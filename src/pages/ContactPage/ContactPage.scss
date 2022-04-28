@@ -1,0 +1,28 @@
+.contact-page {
+    @include flex(column, center, center, 2);
+
+    padding: 16px 8px;
+
+    .list-items {
+        @include flex(column, center, center, 1.5);
+        width: 100%;
+
+        .list-item__line {
+
+            @include flex(row, space-between, center);
+
+            &.justify-end {
+                @include flex(row, flex-end, center, 2);
+            }
+        }
+    }
+
+
+    footer {
+        position: fixed;
+        width: calc(100% - 16px);
+        bottom: 8px;
+        left: 8px;
+    }
+
+}

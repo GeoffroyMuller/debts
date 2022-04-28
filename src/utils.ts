@@ -22,16 +22,17 @@ export function createLocalStore(baseValue = {}, localStorageKey = "") {
 }
 
 
-let ressourcesCache: any = {};
 export function createCacheRessource<T>(key: string, fetcher: () => Promise<T | Array<T>>, options: any = {}) {
-    const [data, { mutate, refetch }] = createResource(fetcher, {
+
+    let ressourcesCache: any = {};
+    const ressource = createResource(fetcher, {
         initialValue: ressourcesCache[key]
     });
 
     createEffect(() => {
-        ressourcesCache[key] = data();
+        ressourcesCache[key] = ressource[0]();
     });
 
-    return [data, { mutate, refetch }];
+    return ressource;
 
 }
