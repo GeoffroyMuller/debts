@@ -34,9 +34,8 @@ const NewTrasactionFormModal: Component<NewTrasactionFormModalProps> = (props) =
 
             const newOperation = {
                 amount: amount(),
-                creditor: !isDebt() ? authstoreValue.user : selectedPersonne(),
-                debtor: isDebt() ? authstoreValue.user : selectedPersonne(),
-                date: new Date().toLocaleDateString(),
+                creditorId: !isDebt() ? authstoreValue.user?.id : selectedPersonne()?.id,
+                debtorId: isDebt() ? authstoreValue.user?.id : selectedPersonne()?.id,
                 description: description()
             };
             await addOperation(newOperation);

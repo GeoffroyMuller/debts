@@ -48,7 +48,7 @@ export default function Home() {
         /* @ts-ignore */
         return (contacts() || []).map((c: Contact) => {
             let totalAmount = 0;
-            for (const operation of c.operations) {
+            for (const operation of c.operations || []) {
                 const isDebt = operation.debtor.id == authstoreValue.user.id;
                 if (isDebt) {
                     totalAmount -= operation.amount
@@ -88,7 +88,7 @@ export default function Home() {
                         Opération à valider
                     </Typo>
                     {/* @ts-ignore */}
-                    <For each={operations()} fallback={<div>Loading...</div>}>
+                    <For each={operations()}>
                         {(operation: Operation) => {
                             const userDisplay = operation.debtor.id === authstoreValue.user.id ? operation.creditor : operation.debtor;
                             const isDebt = operation.debtor.id === authstoreValue.user.id;
@@ -109,7 +109,7 @@ export default function Home() {
                                             {operation.description || ''}
                                         </Typo>
                                         <Typo typo="text2">
-                                            {operation.date || ''}
+                                            {new Date(operation.date || '').toLocaleDateString() || ''}
                                         </Typo>
 
                                     </div>
@@ -184,8 +184,8 @@ const ContactList: Component<ContactListProps> = (props) => {
                                     <Typo typo="text">
                                         {contact.firstname} {contact.lastname}
                                     </Typo>
-                                    <Typo typo="text" color={contact.amount > 0 ? 'success' : 'danger'}>
-                                        {contact.amount > 0 ? 'Credit' : 'Dette'} {Math.abs(contact.amount).toFixed(2)} €
+                                    <Typo typo="text" color={contact.amount > 0 ? 'success' : contact.amount == 0 ? 'black' :'danger'}>
+                                        {contact.amount > 0 ? 'Credit' : contact.amount == 0 ? '' : 'Dette'} {Math.abs(contact.amount).toFixed(2)} €
                                     </Typo>
                                 </div>
                             </ListItem>

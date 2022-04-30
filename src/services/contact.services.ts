@@ -1,6 +1,9 @@
+import axiosInstance from "../plugins/axios"
 import { Contact } from "../types/contact.types"
 
 export async function getContacts(): Promise<Contact[]> {
+    return (await axiosInstance.get('contacts')).data
+
     return [
         {
             id: 3,
@@ -58,6 +61,7 @@ export async function getContacts(): Promise<Contact[]> {
 }
 
 export async function getContactById(id: number): Promise<Contact> {
+    return (await axiosInstance.get(`contacts/${id}`)).data
     return (
         {
             id: 3,

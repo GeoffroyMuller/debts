@@ -1,10 +1,30 @@
+@mixin defaultBtnColor($_color: none) {
+    border: $_color 1px solid;
+    background-color: $_color;
+
+    &:hover {
+        color: $_color;
+    }
+}
+
+@mixin outlinedBtnColor($_color: none) {
+    border: $_color 1px solid;
+    color: $_color;
+    box-shadow: 0px 3px 1px 0px $_color;
+}
+
 .btn {
     @include defaultBtnColor($primary);
+    background: $linear-primary;
     border-radius: 50px;
     color: white;
     padding: 8px 15px;
     cursor: pointer;
-    transition: background-color .25s, box-shadow .25s, color .25s, opacity .25s;
+    transition:
+        background-color .25s,
+        box-shadow .25s,
+        color .25s,
+        opacity .25s;
     min-width: 133px;
     box-shadow: none;
     font-size: 15px;
@@ -33,10 +53,12 @@
     &:hover {
         box-shadow: none;
         background-color: transparent;
+        background: transparent;
     }
 
     &.outlinedBtn {
         background-color: transparent;
+        background: transparent;
         @include outlinedBtnColor($primary);
 
         &.successColor {
@@ -58,11 +80,13 @@
         &:hover {
             box-shadow: none;
             background-color: transparent;
+            background: transparent;
         }
     }
 
     &.textBtn {
         background-color: transparent;
+        background: transparent;
         border: 0;
         padding: 0;
         min-width: 0;
@@ -88,6 +112,7 @@
         &.whiteColor {
             color: $white;
         }
+
         &.blackColor {
             color: $black;
         }

@@ -15,8 +15,13 @@ const Login: Component<LoginProps> = (props) => {
 
     async function handleLogin(event: Event) {
         const [auth, setAuth] = authStore;
-        const response = await login(email(), password());
-        setAuth(response);
+
+        try {
+            const response = await login(email(), password());
+            setAuth(response);
+        } catch (err) {
+            
+        }
     }
 
     return (
